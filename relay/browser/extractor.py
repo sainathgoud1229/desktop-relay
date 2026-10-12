@@ -69,11 +69,12 @@ class _HTMLSemanticParser(HTMLParser):
         "p", "h1", "h2", "h3", "h4", "h5", "h6", "article", "section",
         "li", "div", "blockquote", "main", "header", "footer"
     }
-    IGNORE_TAGS = {"script", "style", "svg", "noscript", "iframe", "canvas"}
+    IGNORE_TAGS = {"script", "style", "svg", "noscript", "iframe", "canvas", "nav"}
     BOILERPLATE_PATTERNS = [
         re.compile(r"cookie|consent|privacy policy|gdpr|accept all", re.I),
         re.compile(r"subscribe to our newsletter|sign up for updates", re.I),
         re.compile(r"advertisement|sponsored|all rights reserved", re.I),
+        re.compile(r"move to sidebar|jump to (?:navigation|search)|skip to (?:main )?content", re.I),
     ]
 
     def __init__(self, base_url: str = "") -> None:

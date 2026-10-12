@@ -327,11 +327,54 @@ def _main(argv: list[str] | None = None) -> int:
         help="safe offline demo of everyday skills (time, battery, maths, notes...)",
     )
     p.add_argument(
+        "--research",
+        metavar="QUERY",
+        help="autonomous multi-source web research and synthesis on QUERY",
+    )
+    p.add_argument(
+        "--browse",
+        metavar="URL",
+        help="fetch and read clean semantic content from URL",
+    )
+    p.add_argument(
         "--update",
         action="store_true",
         help="check for updates from GitHub and update relay.exe in place",
     )
     args = p.parse_args(argv)
+    if args.research:
+        from relay.browser import BrowserAgent
+
+        agent = BrowserAgent()
+        print(f"Researching: {args.research}...")
+        report = agent.research(args.research)
+        print("\n--- Spoken Summary ---")
+        print(report.spoken_summary)
+        if report.results:
+            print("\n--- Sources ---")
+            for res in report.results:
+                print(f"[{res.rank}] {res.title}\n    {res.url}")
+        return 0
+    if args.browse:
+        from relay.browser import BrowserAgent
+
+        agent = BrowserAgent()
+        print(f"Browsing: {args.browse}...")
+        summary = agent.navigate(args.browse)
+        page = agent.current_page
+        if page:
+            print(f"\nTitle: {page.title}")
+            print("\n--- Spoken Summary ---")
+            print(summary)
+            if page.headings:
+                print("\n--- Headings ---")
+                for h in page.headings[:8]:
+                    print(f"  • {h}")
+            if page.interactive_elements:
+                print(f"\n--- Interactive Elements ({len(page.interactive_elements)}) ---")
+                for el in page.interactive_elements[:10]:
+                    print(f"  [{el.tag}] name={el.name!r} type={el.input_type!r} placeholder={el.placeholder!r}")
+        return 0
     if args.update:
         from relay.update import handle_update_command
 

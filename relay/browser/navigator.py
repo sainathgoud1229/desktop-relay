@@ -80,3 +80,43 @@ class BrowserNavigator:
                 return True
             except Exception:
                 return False
+
+    def find_active_browser(self) -> Optional[Any]:
+        """Check if an existing browser window (Edge, Chrome, Brave, Firefox) is foregrounded or open."""
+        try:
+            from relay.system import windows
+
+            fg = windows.foreground()
+            browsers = ("chrome.exe", "msedge.exe", "brave.exe", "firefox.exe", "opera.exe", "vivaldi.exe")
+            if fg and fg.app and fg.app.lower() in browsers:
+                return fg
+            for w in windows.list_windows():
+                if w.app and w.app.lower() in browsers and not w.minimized:
+                    return w
+        except Exception as e:
+            log.warning("Could not list browser windows: %s", e)
+        return None
+
+    def navigate_desktop_browser(self, url: str) -> bool:
+        """If a desktop browser is active, focus the address bar (Ctrl+L) and navigate to URL."""
+        if not url.startswith(("http://", "https://")):
+            url = "https://" + url
+
+        browser_win = self.find_active_browser()
+        if browser_win:
+            try:
+                import time
+                from relay.executor.input_backend import Win32InputBackend
+                from relay.system import windows
+
+                windows.switch_to(browser_win.hwnd)
+                backend = Win32InputBackend()
+                backend.hotkey("ctrl", "l")
+                time.sleep(0.1)
+                backend.type_text(url)
+                backend.press("enter")
+                return True
+            except Exception as e:
+                log.warning("Failed to navigate active browser directly: %s", e)
+
+        return self.open_in_system_browser(url)
