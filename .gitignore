@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+# never commit models, user data, runtime db, credentials
+models/
+*.onnx
+*.bin
+*.gguf
+*.pt
+relay_data/
+*.db
+*.db-wal
+*.db-shm
+# frontend (P10)
+node_modules/
+frontend/dist/
+# unrelated audit-receipt dirs written into cwd by other tooling (not RELAY)
+receipts/
+review-receipts/
+# never commit key material of any kind
+*.key
+*.pfx
+# local settings with keys (see .env.example)
+.env
+@AutomationLog.txt
+*.log
+# packaged binaries (distributed via website and releases)
+*.exe
+!downloads/Relay-Setup.exe
+!frontend/downloads/Relay-Setup.exe
+*.zip
+!downloads/relay-windows-x64.zip
+!frontend/downloads/relay-windows-x64.zip
+*.spec

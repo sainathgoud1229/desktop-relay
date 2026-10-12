@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RELAY — Voice Operating System for Windows</title>
+  <meta name="description" content="RELAY is a fast, honest, and private voice operating system for Windows. Control your PC, browse the web, open apps, dictate text, and ask anything completely hands-free." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar" role="banner">
+    <div class="nav-container">
+      
+      <!-- Brand Logo with 4 Interactive Jumping Balls -->
+      <a href="#what" class="brand-logo" id="logoInteractive" aria-label="Relay Home">
+        <svg class="relay-svg-logo" viewBox="0 0 380 90" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Relay Logo">
+          <!-- Ball 1: Blue -->
+          <g class="logo-ball ball-blue" id="ballBlue" tabindex="0" role="button" aria-label="Blue Relay Orb">
+            <path d="M 50.00,12.00 C 53.83,12.00 57.00,20.43 61.48,22.28 C 65.96,24.14 74.16,20.42 76.87,23.13 C 79.58,25.84 75.86,34.04 77.72,38.52 C 79.57,43.00 88.00,46.17 88.00,50.00 C 88.00,53.83 79.57,57.00 77.72,61.48 C 75.86,65.96 79.58,74.16 76.87,76.87 C 74.16,79.58 65.96,75.86 61.48,77.72 C 57.00,79.57 53.83,88.00 50.00,88.00 C 46.17,88.00 43.00,79.57 38.52,77.72 C 34.04,75.86 25.84,79.58 23.13,76.87 C 20.42,74.16 24.14,65.96 22.28,61.48 C 20.43,57.00 12.00,53.83 12.00,50.00 C 12.00,46.17 20.43,43.00 22.28,38.52 C 24.14,34.04 20.42,25.84 23.13,23.13 C 25.84,20.42 34.04,24.14 38.52,22.28 C 43.00,20.43 46.17,12.00 50.00,12.00 Z" fill="#1877F2"/>
+          </g>
+          <!-- Ball 2: Yellow -->
+          <g class="logo-ball ball-yellow" id="ballYellow" tabindex="0" role="button" aria-label="Yellow Relay Orb" transform="translate(68, 0)">
+            <path d="M 50.00,12.00 C 53.83,12.00 57.00,20.43 61.48,22.28 C 65.96,24.14 74.16,20.42 76.87,23.13 C 79.58,25.84 75.86,34.04 77.72,38.52 C 79.57,43.00 88.00,46.17 88.00,50.00 C 88.00,53.83 79.57,57.00 77.72,61.48 C 75.86,65.96 79.58,74.16 76.87,76.87 C 74.16,79.58 65.96,75.86 61.48,77.72 C 57.00,79.57 53.83,88.00 50.00,88.00 C 46.17,88.00 43.00,79.57 38.52,77.72 C 34.04,75.86 25.84,79.58 23.13,76.87 C 20.42,74.16 24.14,65.96 22.28,61.48 C 20.43,57.00 12.00,53.83 12.00,50.00 C 12.00,46.17 20.43,43.00 22.28,38.52 C 24.14,34.04 20.42,25.84 23.13,23.13 C 25.84,20.42 34.04,24.14 38.52,22.28 C 43.00,20.43 46.17,12.00 50.00,12.00 Z" fill="#FBBC05"/>
+          </g>
+          <!-- Ball 3: Green -->
+          <g class="logo-ball ball-green" id="ballGreen" tabindex="0" role="button" aria-label="Green Relay Orb" transform="translate(136, 0)">
+            <path d="M 50.00,12.00 C 53.83,12.00 57.00,20.43 61.48,22.28 C 65.96,24.14 74.16,20.42 76.87,23.13 C 79.58,25.84 75.86,34.04 77.72,38.52 C 79.57,43.00 88.00,46.17 88.00,50.00 C 88.00,53.83 79.57,57.00 77.72,61.48 C 75.86,65.96 79.58,74.16 76.87,76.87 C 74.16,79.58 65.96,75.86 61.48,77.72 C 57.00,79.57 53.83,88.00 50.00,88.00 C 46.17,88.00 43.00,79.57 38.52,77.72 C 34.04,75.86 25.84,79.58 23.13,76.87 C 20.42,74.16 24.14,65.96 22.28,61.48 C 20.43,57.00 12.00,53.83 12.00,50.00 C 12.00,46.17 20.43,43.00 22.28,38.52 C 24.14,34.04 20.42,25.84 23.13,23.13 C 25.84,20.42 34.04,24.14 38.52,22.28 C 43.00,20.43 46.17,12.00 50.00,12.00 Z" fill="#00C853"/>
+          </g>
+          <!-- Ball 4: Red -->
+          <g class="logo-ball ball-red" id="ballRed" tabindex="0" role="button" aria-label="Red Relay Orb" transform="translate(204, 0)">
+            <path d="M 50.00,12.00 C 53.83,12.00 57.00,20.43 61.48,22.28 C 65.96,24.14 74.16,20.42 76.87,23.13 C 79.58,25.84 75.86,34.04 77.72,38.52 C 79.57,43.00 88.00,46.17 88.00,50.00 C 88.00,53.83 79.57,57.00 77.72,61.48 C 75.86,65.96 79.58,74.16 76.87,76.87 C 74.16,79.58 65.96,75.86 61.48,77.72 C 57.00,79.57 53.83,88.00 50.00,88.00 C 46.17,88.00 43.00,79.57 38.52,77.72 C 34.04,75.86 25.84,79.58 23.13,76.87 C 20.42,74.16 24.14,65.96 22.28,61.48 C 20.43,57.00 12.00,53.83 12.00,50.00 C 12.00,46.17 20.43,43.00 22.28,38.52 C 24.14,34.04 20.42,25.84 23.13,23.13 C 25.84,20.42 34.04,24.14 38.52,22.28 C 43.00,20.43 46.17,12.00 50.00,12.00 Z" fill="#FF3B30"/>
+          </g>
+          <!-- Wordmark: relay -->
+          <text x="306" y="65" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="700" letter-spacing="-1.5" class="logo-text">relay</text>
+        </svg>
+      </a>
+
+      <!-- Clean Navigation Links (No Numbers) -->
+      <nav class="nav-menu" aria-label="Main sections">
+        <a href="#what" class="nav-item">What is Relay?</a>
+        <a href="#commands" class="nav-item">How to Use</a>
+        <a href="#download" class="nav-item">Download</a>
+      </nav>
+
+      <!-- Action items: Status Indicator, Theme Toggle & Direct Setup Download -->
+      <div class="nav-actions">
+        <div class="nav-status-badge" role="status" aria-label="Testing status: Ready and Active" title="Relay v1.4.0 Live Engine Active and Fully Tested">
+          <span class="status-pulse-dot"></span>
+          <span class="status-badge-text">v1.4.0 Live &amp; Tested</span>
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark mode">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <a href="downloads/Relay-Setup.exe" download="Relay-Setup.exe" class="btn btn-primary btn-sm nav-download-btn" aria-label="Download Relay Setup Installer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download Setup (8.4 MB)</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="page-container">
+
+    <!-- ================================================================= -->
+    <!-- SECTION 1: What is RELAY, and Who is it for?                      -->
+    <!-- ================================================================= -->
+    <section id="what" class="screen-section">
+      <div class="hero-block">
+        <h1 class="hero-headline">
+          Control your entire Windows PC with your voice.
+        </h1>
+        <p class="hero-subhead">
+          RELAY is a fast, offline voice operating assistant for Windows. It lets you open apps, search the web, dictate text, and ask general questions hands-free. No technical jargon. No subscriptions.
+        </p>
+
+        <!-- Direct Action Bar -->
+        <div class="hero-actions">
+          <a href="downloads/Relay-Setup.exe" download="Relay-Setup.exe" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Relay Installer (8.4 MB)
+          </a>
+          <a href="#download" class="btn btn-secondary btn-lg">
+            All Downloads & Setup
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Two Clear Columns: What is it? and Who is it for? -->
+      <div class="two-column-grid">
+        
+        <!-- Column A: What is RELAY? -->
+        <div class="card card-feature">
+          <div class="card-header">
+            <div class="card-icon-pill">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></polyline>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <div>
+              <h2 class="card-title">What is RELAY?</h2>
+              <p class="card-subtitle">An honest, private voice companion for Windows 10 & 11.</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <ul class="clean-list">
+              <li>
+                <strong>Hands-Free Computer Control:</strong> Launch multi-step tasks like <em>"open yt, and go to shorts in yt"</em>, switch apps, or close windows with natural speech.
+              </li>
+              <li>
+                <strong>True Screen Awareness:</strong> RELAY reads dialogs, focused buttons, and text fields without vomiting background UI clutter.
+              </li>
+              <li>
+                <strong>100% Private Offline Core:</strong> All basic desktop commands, speech recognition, and screen reading run directly on your laptop.
+              </li>
+              <li>
+                <strong>Fast Conversational AI:</strong> Ask general questions like <em>"who invented the telephone"</em> and get direct spoken answers in seconds.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column B: Who is it for? -->
+        <div class="card card-feature">
+          <div class="card-header">
+            <div class="card-icon-pill">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="card-title">Who is it for?</h2>
+              <p class="card-subtitle">Built with extreme empathy for everyday humans.</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <ul class="clean-list">
+              <li>
+                <strong>Blind and Visually Impaired Users:</strong> Full desktop independence with clear delta narration, spoken confirmation, and reliable keyboard shortcuts.
+              </li>
+              <li>
+                <strong>Hands-Free Workers & Multitaskers:</strong> Cook, sketch, study, or write while controlling media, timers, notes, and searches without touching the mouse.
+              </li>
+              <li>
+                <strong>Anyone Tired of Complex Menus:</strong> Skip navigating nested settings or tiny buttons—just press to talk and let RELAY do the work.
+              </li>
+              <li>
+                <strong>Students & Professionals:</strong> Dictate paragraphs, run quick calculations, and summarize text on screen on the fly.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 2: How to Use & Voice Commands                            -->
+    <!-- ================================================================= -->
+    <section id="commands" class="screen-section">
+      <div class="section-header-block">
+        <h2 class="section-title">How to use RELAY</h2>
+        <p class="section-desc">
+          Two simple ways to talk. Zero background noise. Direct, predictable results.
+        </p>
+      </div>
+
+      <!-- How to Talk: 2 Cards -->
+      <div class="two-column-grid talk-methods">
+        
+        <!-- Method 1: Press-and-Hold to Talk -->
+        <div class="card method-card featured-method">
+          <div class="method-tag">Recommended</div>
+          <h3 class="method-title">1. Press-and-Hold to Talk</h3>
+          <p class="method-desc">Hold down all three keys together while you talk. Release the moment you finish speaking.</p>
+          
+          <div class="key-combo" aria-label="Control plus Alt plus Space">
+            <kbd>Ctrl</kbd>
+            <span class="key-plus">+</span>
+            <kbd>Alt</kbd>
+            <span class="key-plus">+</span>
+            <kbd class="key-space">Space</kbd>
+          </div>
+
+          <p class="method-note">
+            ✓ Instantly finalizes and transcribes upon release<br>
+            ✓ Eliminates all trailing room noise and background chatter
+          </p>
+        </div>
+
+        <!-- Method 2: Wake Word -->
+        <div class="card method-card">
+          <div class="method-tag tag-subtle">Hands-Free</div>
+          <h3 class="method-title">2. Say "Relay"</h3>
+          <p class="method-desc">Just say the wake word followed by your command across the room.</p>
+          
+          <div class="wake-example">
+            <span class="wake-word">"Relay,</span>
+            <span class="wake-cmd">what time is it?"</span>
+          </div>
+
+          <p class="method-note">
+            ✓ Completely hands-free mic monitoring<br>
+            ✓ Automatically suppresses ambient noise blips
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Real Voice Commands That Work -->
+      <div class="commands-block">
+        <div class="commands-header">
+          <h3 class="commands-heading">Practical Commands</h3>
+          <p class="commands-sub">Everything below works right now in Relay.</p>
+        </div>
+
+        <div class="command-grid">
+          
+          <!-- Command 1 -->
+          <div class="command-card">
+            <div class="cmd-category">Multi-Step Apps</div>
+            <div class="cmd-voice">"open yt, and go to shorts in yt"</div>
+            <div class="cmd-result">Opens YouTube in your browser and automatically jumps straight into Shorts.</div>
+          </div>
+
+          <!-- Command 2 -->
+          <div class="command-card">
+            <div class="cmd-category">Smart Answers</div>
+            <div class="cmd-voice">"who was the first person on the moon?"</div>
+            <div class="cmd-result">Relay answers aloud with Neil Armstrong in a natural, calm human voice.</div>
+          </div>
+
+          <!-- Command 3 -->
+          <div class="command-card">
+            <div class="cmd-category">Screen & Reading</div>
+            <div class="cmd-voice">"what's on my screen"</div>
+            <div class="cmd-result">Narrates your active window, focus position, and clear next steps.</div>
+          </div>
+
+          <!-- Command 4 -->
+          <div class="command-card">
+            <div class="cmd-category">Web & Search</div>
+            <div class="cmd-voice">"search for today's weather"</div>
+            <div class="cmd-result">Instantly launches a search in your preferred default web browser.</div>
+          </div>
+
+          <!-- Command 5 -->
+          <div class="command-card">
+            <div class="cmd-category">Media Playback</div>
+            <div class="cmd-voice">"play lofi on youtube"</div>
+            <div class="cmd-result">Finds and begins playing lofi beats on YouTube immediately.</div>
+          </div>
+
+          <!-- Command 6 -->
+          <div class="command-card">
+            <div class="cmd-category">Laptop Controls</div>
+            <div class="cmd-voice">"set volume to 50 percent"</div>
+            <div class="cmd-result">Adjusts Windows master volume cleanly with spoken confirmation.</div>
+          </div>
+
+          <!-- Command 7 -->
+          <div class="command-card">
+            <div class="cmd-category">Typing & Dictation</div>
+            <div class="cmd-voice">"type hello world and press enter"</div>
+            <div class="cmd-result">Types the text into the focused edit box and presses enter.</div>
+          </div>
+
+          <!-- Command 8 -->
+          <div class="command-card">
+            <div class="cmd-category">Quick Status</div>
+            <div class="cmd-voice">"how's my battery"</div>
+            <div class="cmd-result">Reports current laptop battery percentage and whether it is charging.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 3: Download Buttons & Setup                               -->
+    <!-- ================================================================= -->
+    <section id="download" class="screen-section">
+      <div class="section-header-block">
+        <h2 class="section-title">Get RELAY for Windows</h2>
+        <p class="section-desc">
+          Single executable or portable zip package. Free and open source.
+        </p>
+      </div>
+
+      <!-- Main Download Card -->
+      <div class="download-container">
+        
+        <div class="download-main-card">
+          <div class="download-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </div>
+          
+          <div class="download-meta">
+            <h3 class="download-title">Relay for Windows 10 & 11</h3>
+            <p class="download-sub">Version 0.3.3 · x64 Architecture · Installer, Standalone & Portable</p>
+              <div class="download-buttons-row">
+            <!-- Primary Option: 1-Click Installer (Recommended) -->
+            <a href="downloads/Relay-Setup.exe" download="Relay-Setup.exe" class="btn btn-primary btn-xl" id="downloadInstallerBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              1-Click Installer (Relay-Setup.exe)
+              <span class="btn-file-size">8.4 MB · Recommended</span>
+            </a>
+
+            <!-- Secondary Option: Portable ZIP Download -->
+            <a href="downloads/relay-windows-x64.zip" download="relay-windows-x64.zip" class="btn btn-secondary btn-xl" id="downloadZipBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 8v13H3V8"></path>
+                <path d="M1 3h22v5H1z"></path>
+                <path d="M10 12h4"></path>
+              </svg>
+              Portable ZIP Package
+              <span class="btn-file-size">33.4 MB</span>
+            </a>
+          </div>         </div>
+
+          <!-- Simple 3-step setup -->
+          <div class="setup-steps">
+            <div class="setup-step">
+              <div class="step-num">1</div>
+              <div class="step-text">Run <code>Relay-Setup.exe</code> (or download <code>relay.exe</code>).</div>
+            </div>
+            <div class="setup-step-divider"></div>
+            <div class="setup-step">
+              <div class="step-num">2</div>
+              <div class="step-text">Launches Relay in system tray.</div>
+            </div>
+            <div class="setup-step-divider"></div>
+            <div class="setup-step">
+              <div class="step-num">3</div>
+              <div class="step-text">Hold <code>Ctrl+Alt+Space</code> & speak!</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="page-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="footer-logo-text">relay</span>
+        <span class="footer-tag">Voice Operating System</span>
+      </div>
+      <div class="footer-info">
+        <span>Windows 10 / 11 64-bit</span>
+        <span>•</span>
+        <span>Offline-first & Private</span>
+        <span>•</span>
+        <span>Open Source</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "style.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "app.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "logo.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "downloads/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/downloads/(.*)",
+      "headers": {
+        "Content-Disposition": "attachment"
+      },
+      "dest": "/downloads/$1"
+    },
+    {
+      "src": "/Relay-Setup.exe",
+      "headers": {
+        "Content-Disposition": "attachment"
+      },
+      "dest": "/downloads/Relay-Setup.exe"
+    },
+    {
+      "src": "/relay.exe",
+      "headers": {
+        "Content-Disposition": "attachment"
+      },
+      "dest": "/downloads/Relay-Setup.exe"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
