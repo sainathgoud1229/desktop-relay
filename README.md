@@ -110,8 +110,8 @@ Deploy Relay on any Windows 10 or 11 system (64-bit):
 
 ```bash
 # Clone the repository
-git clone https://github.com/nagasaipradhyumnapoola/relay.git
-cd relay/app
+git clone https://github.com/sainathgoud1229/desktop-relay.git
+cd desktop-relay
 
 # Create virtual environment with uv or python
 uv venv

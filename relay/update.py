@@ -26,7 +26,7 @@ from relay.diagnostics import get_logger
 
 log = get_logger("update")
 
-GITHUB_REPO = "nagasaipradhyumnapoola/relay"
+GITHUB_REPO = "sainathgoud1229/desktop-relay"
 API_RELEASE_URL = f"https://api.github.com/repos/{GITHUB_REPO}/releases/latest"
 RAW_VERSION_URL = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/pyproject.toml"
 

@@ -69,11 +69,13 @@ def routes_from_config(cfg) -> list[Route]:
     models = [m for m in (cfg.llm_models or []) if m]
     if not models or models == ["auto:fast", "auto"]:
         if "googleapis.com" in url.lower():
-            models = ["gemini-2.0-flash", "gemini-1.5-flash"]
+            models = ["gemini-3.8-flash", "gemini-3.5-flash"]
         elif "groq.com" in url.lower():
-            models = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+            models = ["qwen/qwen3.8-27b"]
         elif "openai.com" in url.lower():
             models = ["gpt-4o-mini", "gpt-3.5-turbo"]
+        elif "openrouter.ai" in url.lower():
+            models = ["google/gemini-2.0-flash-001", "meta-llama/llama-3.3-70b-instruct", "openai/gpt-4o-mini"]
         else:
             models = ["auto:fast", "auto"]
     hints: dict[str, float] = {}
@@ -125,7 +127,7 @@ def routes_from_config(cfg) -> list[Route]:
             )
     gemini_k = os.environ.get("GEMINI_API_KEY", "").strip() or get_secret("GEMINI_API_KEY", "").strip()
     if gemini_k and "googleapis.com" not in url.lower():
-        for gm in ["gemini-3.8-flash", "gemini-flash-latest"]:
+        for gm in ["gemini-3.8-flash", "gemini-3.5-flash"]:
             routes.append(
                 Route(
                     name=f"gemini-{gm}",
