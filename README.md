@@ -86,11 +86,25 @@ Relay includes a native, zero-exposure credential manager for hands-free login:
 - **Hardware-Bound Windows DPAPI Encryption**: Secrets are encrypted at rest using `CryptProtectData` and decrypted exclusively inside process memory using `CryptUnprotectData`.
 - **Zero Leakage Guarantee**: Passwords and secrets are strictly masked and **never** spoken aloud by speech synthesis, never logged to stdout/files, never exposed in screen reading delta streams, and never committed to git.
 
-### 5. Local & Offline By Design
+### 5. Hedged Multi-Model LLM Routing (Google Gemini & Groq)
+Relay races multiple cloud providers in parallel using latency-optimized hedged routing:
+- **Google Gemini**: Uses `gemini-3.5-flash` and `gemini-3.8-flash` for high-throughput reasoning and question answering.
+- **Groq LPU**: Uses `qwen/qwen3.8-27b` delivering sub-second Time-To-First-Token (TTFT) performance.
+- **Adaptive Hedging & Failover**: Monitors exponential moving averages of TTFT across providers. If a route times out, hits rate limits (HTTP 429), or errors, the router automatically fails over to the next fastest route seamlessly.
+- **Sentence-by-Sentence Streaming**: Responses are streamed token-by-token and passed to speech synthesis sentence by sentence, eliminating user wait time.
+
+### 6. Autonomous Browser & Web Research Agent
+Built-in web intelligence that browses, filters, and extracts knowledge hands-free:
+- **Multi-Source Resilient Research**: Queries DuckDuckGo Instant Answer API, Wikipedia OpenSearch API, and fallback search engines to gather multi-angle insights.
+- **Noise-Free Semantic Page Extraction**: Automatically filters out cookie banners, navigation menus, ads, headers, and footers, extracting only genuine article content and headings.
+- **Desktop Browser Coordination**: Interacts with the user's active browser (Brave, Chrome, Edge, Firefox) or runs headless semantic analysis.
+- **Grounded Spoken Synthesis**: Synthesizes clean multi-sentence audio briefings designed for natural listening.
+
+### 7. Local & Offline By Design
 - Core speech recognition runs locally via **Whisper**.
 - Voice synthesis runs locally via **Piper TTS**.
 - Offline intent grammar handles system actions, window management, media, typing, and DPAPI credentials without internet connection.
-- Optional high-speed AI assistance integrates with free API providers (Google AI Studio, Groq, FreeLLMAPI, Sarvam AI) with sub-200ms latency.
+- High-speed conversational AI with Gemini & Groq or local routers (FreeLLMAPI).
 
 ---
 
@@ -120,11 +134,27 @@ uv venv
 # Install dependencies
 uv pip install -e ".[voice,dev]"
 
+# (Optional) Configure API keys for Gemini, Groq, and Sarvam AI
+copy .env.example .env
+# Edit .env and paste your keys:
+# GEMINI_API_KEY=...
+# GROQ_API_KEY=...
+# SARVAM_API_KEY=...
+
 # Verify installation & run self-tests
 python -m relay --selftest
 python -m relay --check
 
-# Start Relay
+# Test LLM routing latency across Gemini and Groq
+python -m relay --llm-check
+
+# Run autonomous web research
+python -m relay --research "latest breakthroughs in quantum computing"
+
+# Browse and extract clean semantic content from any web page
+python -m relay --browse "https://news.ycombinator.com"
+
+# Start Relay interactive voice session
 python -m relay --start
 ```
 
@@ -257,7 +287,10 @@ Validates 30 autonomous computer scenarios back-to-back:
 ```
 # Multi-Step Tasks
 "open notepad, type hello world, and save the file"
-"open brave then search for latest rust updates then read the first result"
+# Web Research & Online Knowledge
+"research what is agentic ai"
+"research latest space missions"
+"search for python 3.12 release notes"
 
 # Screen Reading & Direct Q&A
 "what's on screen?"
