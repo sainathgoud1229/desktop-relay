@@ -1510,6 +1510,21 @@ class Skills:
     def k_web_search(self, i):
         return self._search(i.slots.get("query", ""), site=i.slots.get("site"))
 
+    def k_research(self, i):
+        from relay.browser import BrowserAgent
+
+        q = i.slots.get("query", "").strip()
+        if not q:
+            self.say("What topic would you like me to research?")
+            return
+        self.say(f"Researching {q}. One moment.")
+        agent = BrowserAgent(bus=getattr(self.s, "bus", None))
+        report = agent.research(q)
+        if report.spoken_summary:
+            self.say(report.spoken_summary)
+        else:
+            self.say(f"I researched {q}, but found no clear results.")
+
     def k_youtube(self, i):
         from relay.system import web, windows
 

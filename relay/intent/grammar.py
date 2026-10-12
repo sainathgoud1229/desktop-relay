@@ -82,6 +82,7 @@ class Kind:
     CALCULATE = "calculate"
     # web / files / windows
     WEB_SEARCH = "web_search"
+    RESEARCH = "research"
     YOUTUBE = "youtube"
     FIND_FILE = "find_file"
     OPEN_FILE = "open_file"
@@ -1163,6 +1164,17 @@ def parse(utterance: str) -> Intent:
         q = re.sub(r"\s+please$", "", m.group(1).strip())
         if q and q not in ("the web", "google", "online", "the internet"):
             return I(Kind.WEB_SEARCH, query=q)
+
+    # ---- autonomous web research ----
+    m_res = re.match(
+        r"^(?:research|deep research|investigate)\s+(?:for\s+|about\s+|on\s+)?(.+)$",
+        keep,
+        re.I,
+    )
+    if m_res:
+        q = re.sub(r"\s+please$", "", m_res.group(1).strip())
+        if q:
+            return I(Kind.RESEARCH, query=q)
 
     # ---- windows ----
     if re.search(

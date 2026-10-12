@@ -8,7 +8,10 @@ into utterance boundaries with a little hangover so word endings aren't clipped.
 
 from __future__ import annotations
 
-import webrtcvad
+try:
+    import webrtcvad
+except ImportError:
+    webrtcvad = None
 
 SAMPLE_RATE = 16000
 FRAME_MS = 30
@@ -18,6 +21,8 @@ FRAME_BYTES = int(SAMPLE_RATE * FRAME_MS / 1000) * 2  # 16-bit mono
 class VAD:
     def __init__(self, aggressiveness: int = 2) -> None:
         # 0 (permissive) .. 3 (aggressive). 2 is a good default for a quiet room.
+        if webrtcvad is None:
+            raise RuntimeError("webrtcvad is not installed. Install with 'uv pip install webrtcvad-wheels'")
         self._vad = webrtcvad.Vad(aggressiveness)
 
     def is_speech(self, frame_bytes: bytes) -> bool:
