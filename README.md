@@ -298,7 +298,7 @@ All tests pass hermetically across Windows environments.
 
 ## Contributing & License
 
-Relay is open source under the **MIT License**. Contributions, feature requests, and bug reports are welcome.
+Relay is open source under the **MIT License** (Copyright (c) 2026 Sainath Goud). Contributions, feature requests, and bug reports are welcome.
 
 <p align="center">
   <sub>Engineered for accessibility, safety, and transparent computer operation.</sub>
